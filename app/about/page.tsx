@@ -383,7 +383,7 @@ export default function AboutPage() {
                   ))}
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-6 italic">
-                  "{testimonial.comment}"
+                  &ldquo;{testimonial.comment}&rdquo;
                 </p>
                 <p className="font-semibold text-gray-900">
                   {testimonial.name}
