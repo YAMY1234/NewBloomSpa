@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --background: 30 25% 98%;
-    --foreground: 25 40% 20%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
   }
 
   body {
-    @apply bg-[#faf8f6] text-gray-900 antialiased;
+    @apply bg-white text-gray-900 antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -19,8 +19,8 @@
 
 @layer components {
   .btn-primary {
-    @apply px-8 py-3 bg-primary-600 text-white rounded-full font-medium 
-           hover:bg-primary-700 transition-all duration-300 
+    @apply px-8 py-3 bg-sage-600 text-white rounded-full font-medium 
+           hover:bg-sage-700 transition-all duration-300 
            hover:shadow-lg hover:scale-105 active:scale-95;
   }
 

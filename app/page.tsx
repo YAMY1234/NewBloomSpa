@@ -39,42 +39,48 @@ export default function Home() {
       duration: t.services.massage.swedish.duration,
       price: t.services.massage.swedish.price,
       description: t.services.massage.swedish.description,
-      features: [t.home.featuredServices.features.fullRelax, t.home.featuredServices.features.stressRelief, t.home.featuredServices.features.improveSleep]
+      features: [t.home.featuredServices.features.fullRelax, t.home.featuredServices.features.stressRelief, t.home.featuredServices.features.improveSleep],
+      image: "/images/body.jpg"
     },
     {
       title: t.services.massage.deepTissue.title,
       duration: t.services.massage.deepTissue.duration,
       price: t.services.massage.deepTissue.price,
       description: t.services.massage.deepTissue.description,
-      features: [t.home.featuredServices.features.deepRelax, t.home.featuredServices.features.painRelief, t.home.featuredServices.features.flexibility]
+      features: [t.home.featuredServices.features.deepRelax, t.home.featuredServices.features.painRelief, t.home.featuredServices.features.flexibility],
+      image: "/images/body2.jpg"
     },
     {
       title: t.services.facial.classic.title,
       duration: t.services.facial.classic.duration,
       price: t.services.facial.classic.price,
       description: t.services.facial.classic.description,
-      features: [t.home.featuredServices.features.deepCleanse, t.home.featuredServices.features.hydration, t.home.featuredServices.features.antiAging]
+      features: [t.home.featuredServices.features.deepCleanse, t.home.featuredServices.features.hydration, t.home.featuredServices.features.antiAging],
+      image: "/images/head.jpg"
     },
     {
       title: t.services.body.scrub.title,
       duration: t.services.body.scrub.duration,
       price: t.services.body.scrub.price,
       description: t.services.body.scrub.description,
-      features: [t.home.featuredServices.features.exfoliate, t.home.featuredServices.features.smoothSkin, t.home.featuredServices.features.metabolism]
+      features: [t.home.featuredServices.features.exfoliate, t.home.featuredServices.features.smoothSkin, t.home.featuredServices.features.metabolism],
+      image: "/images/head2.jpg"
     },
     {
       title: t.services.massage.aromatherapy.title,
       duration: t.services.massage.aromatherapy.duration,
       price: t.services.massage.aromatherapy.price,
       description: t.services.massage.aromatherapy.description,
-      features: [t.home.featuredServices.features.balance, t.home.featuredServices.features.emotional, t.home.featuredServices.features.immunity]
+      features: [t.home.featuredServices.features.balance, t.home.featuredServices.features.emotional, t.home.featuredServices.features.immunity],
+      image: "/images/head4.jpg"
     },
     {
       title: t.services.massage.hotStone.title,
       duration: t.services.massage.hotStone.duration,
       price: t.services.massage.hotStone.price,
       description: t.services.massage.hotStone.description,
-      features: [t.home.featuredServices.features.deepRelax, t.home.featuredServices.features.circulation, t.home.featuredServices.features.energy]
+      features: [t.home.featuredServices.features.deepRelax, t.home.featuredServices.features.circulation, t.home.featuredServices.features.energy],
+      image: "/images/foot.jpg"
     }
   ];
 
@@ -272,7 +278,10 @@ export default function Home() {
                 variants={fadeInUp}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div className="h-48 bg-[url('/images/body.jpg')] bg-cover bg-center" />
+                <div 
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${service.image}')` }}
+                />
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-2xl font-serif font-semibold text-gray-900">
@@ -301,7 +310,7 @@ export default function Home() {
                     href="https://new-bloom-spa.square.site/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-center py-3 px-6 bg-primary-600 text-white rounded-full font-medium hover:bg-primary-700 transition-colors"
+                    className="block text-center py-3 px-6 bg-sage-600 text-white rounded-full font-medium hover:bg-sage-700 transition-colors"
                   >
                     {t.home.hero.bookNow}
                   </a>
@@ -326,7 +335,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <section className="section-padding bg-gradient-to-r from-sage-600 to-sage-800 text-white">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -338,7 +347,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-serif font-bold">
               {t.home.cta.title}
             </h2>
-            <p className="text-xl text-primary-100 leading-relaxed">
+            <p className="text-xl text-sage-100 leading-relaxed">
               {t.home.cta.subtitle}
               <br />
               {t.home.cta.subtitle2}
@@ -348,13 +357,13 @@ export default function Home() {
                 href="https://new-bloom-spa.square.site/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-10 py-4 bg-white text-primary-600 rounded-full font-bold text-lg hover:bg-primary-50 transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                className="px-10 py-4 bg-white text-sage-600 rounded-full font-bold text-lg hover:bg-sage-50 transition-all duration-300 hover:shadow-2xl hover:scale-105"
               >
                 {t.home.cta.bookNow}
               </a>
               <Link
                 href="/contact"
-                className="px-10 py-4 border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-primary-600 transition-all duration-300"
+                className="px-10 py-4 border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-sage-600 transition-all duration-300"
               >
                 {t.home.cta.contactUs}
               </Link>

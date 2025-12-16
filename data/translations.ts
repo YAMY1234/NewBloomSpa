@@ -455,6 +455,39 @@ export const translations = {
       }
     },
     
+    // Lucky Draw Page
+    luckyDraw: {
+      nav: "Lucky Draw",
+      hero: {
+        title: "Spin & Win",
+        subtitle: "Try your luck and win exclusive offers for your next visit!",
+        button: "Spin Now"
+      },
+      prizes: {
+        discount10: "10% Off",
+        discount20: "20% Off",
+        freeAroma: "Free Aromatherapy",
+        freeHotStone: "Free Hot Stone",
+        freeMask: "Free Face Mask",
+        sample: "Free Sample"
+      },
+      result: {
+        congrats: "Congratulations!",
+        youWon: "You won:",
+        claim: "Show this screen to our staff to claim your prize.",
+        disclaimer: "* Valid for your next visit only. Cannot be combined with other offers."
+      },
+      rules: {
+        title: "Rules & Terms",
+        items: [
+          "One spin per customer per month.",
+          "Prizes are valid for 30 days from the date of winning.",
+          "Please screenshot your result to claim the prize.",
+          "Management reserves the right of final interpretation."
+        ]
+      }
+    },
+
     // Footer
     footer: {
       description: "Professional beauty care and massage services, creating a private space for body and mind relaxation, where beauty and health bloom.",
@@ -928,6 +961,39 @@ export const translations = {
       }
     },
     
+    // Lucky Draw Page
+    luckyDraw: {
+      nav: "幸运抽奖",
+      hero: {
+        title: "幸运大转盘",
+        subtitle: "试​​试手气，赢取您下一次光临的专属优惠！",
+        button: "立即抽奖"
+      },
+      prizes: {
+        discount10: "9折优惠",
+        discount20: "8折优惠",
+        freeAroma: "免费香薰",
+        freeHotStone: "免费热石",
+        freeMask: "免费面膜",
+        sample: "免费小样"
+      },
+      result: {
+        congrats: "恭喜您！",
+        youWon: "您获得了：",
+        claim: "请向我们的工作人员出示此页面以兑换您的奖品。",
+        disclaimer: "* 仅限下次光临使用。不可与其他优惠同时使用。"
+      },
+      rules: {
+        title: "活动规则",
+        items: [
+          "每位客户每月限抽奖一次。",
+          "奖品自中奖之日起30天内有效。",
+          "请截屏保存中奖结果以便兑换。",
+          "最终解释权归 NewBloom Spa 所有。"
+        ]
+      }
+    },
+
     // 页脚
     footer: {
       description: "专业的美容护理和按摩服务，为您打造身心放松的私密空间，让美丽与健康在这里绽放。",

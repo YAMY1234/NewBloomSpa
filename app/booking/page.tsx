@@ -167,7 +167,7 @@ export default function BookingPage() {
                     href={SQUARE_APPOINTMENTS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-10 py-4 bg-primary-600 text-white rounded-full font-bold text-lg hover:bg-primary-700 transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                    className="inline-block px-10 py-4 bg-sage-600 text-white rounded-full font-bold text-lg hover:bg-sage-700 transition-all duration-300 hover:shadow-2xl hover:scale-105"
                   >
                     {t.booking.square.button}
                   </a>

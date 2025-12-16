@@ -11,7 +11,7 @@ export default function Footer() {
   const t = translations[language];
 
   return (
-    <footer className="relative bg-[#845235] text-white overflow-hidden">
+    <footer className="relative bg-sage-900 text-white overflow-hidden">
       <div className="absolute inset-0 bg-[url('/images/foot.jpg')] bg-cover bg-center opacity-10" />
       <div className="relative z-10 container-custom px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -29,7 +29,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-700 flex items-center justify-center hover:bg-primary-500 transition-colors"
+                className="w-10 h-10 rounded-full bg-sage-800 flex items-center justify-center hover:bg-primary-600 transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
@@ -38,7 +38,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-700 flex items-center justify-center hover:bg-primary-500 transition-colors"
+                className="w-10 h-10 rounded-full bg-sage-800 flex items-center justify-center hover:bg-primary-600 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -122,7 +122,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-primary-700 mt-12 pt-8 text-center text-primary-100 text-sm">
+        <div className="border-t border-sage-800 mt-12 pt-8 text-center text-sage-300 text-sm">
           <p>&copy; {currentYear} NewBloom Spa. {t.footer.copyright}</p>
         </div>
       </div>

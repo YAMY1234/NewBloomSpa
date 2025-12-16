@@ -338,7 +338,7 @@ export default function ServicesPage() {
                       href="https://new-bloom-spa.square.site/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-center py-3 px-6 bg-primary-600 text-white rounded-full font-medium hover:bg-primary-700 transition-colors"
+                      className="block text-center py-3 px-6 bg-sage-600 text-white rounded-full font-medium hover:bg-sage-700 transition-colors"
                     >
                       {t.services.cta.bookNow}
                     </a>
@@ -351,7 +351,7 @@ export default function ServicesPage() {
       ))}
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <section className="section-padding bg-gradient-to-r from-sage-600 to-sage-800 text-white">
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -363,14 +363,14 @@ export default function ServicesPage() {
             <h2 className="text-4xl md:text-5xl font-serif font-bold">
               {t.services.cta.title}
             </h2>
-            <p className="text-xl text-primary-100">
+            <p className="text-xl text-sage-100">
               {t.services.cta.subtitle}
             </p>
             <a
               href="https://new-bloom-spa.square.site/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-10 py-4 bg-white text-primary-600 rounded-full font-bold text-lg hover:bg-primary-50 transition-all duration-300 hover:shadow-2xl hover:scale-105"
+              className="inline-block px-10 py-4 bg-white text-sage-600 rounded-full font-bold text-lg hover:bg-sage-50 transition-all duration-300 hover:shadow-2xl hover:scale-105"
             >
               {t.services.cta.bookNow}
             </a>

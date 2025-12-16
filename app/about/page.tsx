@@ -292,7 +292,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <section className="section-padding bg-gradient-to-r from-sage-600 to-sage-800 text-white">
         <div className="container-custom">
           <motion.div
             initial="initial"
@@ -315,7 +315,7 @@ export default function AboutPage() {
                 <div className="text-5xl md:text-6xl font-bold mb-2">
                   {stat.number}
                 </div>
-                <div className="text-xl text-primary-100">
+                <div className="text-xl text-sage-100">
                   {stat.label}
                 </div>
               </motion.div>
