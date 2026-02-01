@@ -5,14 +5,11 @@ import { motion, useAnimation } from "framer-motion";
 import { 
   Gift, 
   Sparkles, 
-  RefreshCw, 
   Crown, 
   User, 
   Hand, 
   Eye, 
-  Smile, 
   Battery, 
-  Footprints, 
   Droplets, 
   Leaf, 
   Activity,
@@ -30,17 +27,15 @@ export default function LuckyDrawPage() {
   const [hasSpun, setHasSpun] = useState(false);
 
   const prizes = useMemo(() => [
-    { id: 'head', icon: Crown, name: { en: "Head gua sha therapy", zh: "头部刮痧" }, price: 30, color: "#b07e62" },
-    { id: 'neck', icon: User, name: { en: "Neck lymphatic detox", zh: "颈部淋巴排毒" }, price: 50, color: "#588c6e" },
-    { id: 'hand1', icon: Hand, name: { en: "Hand care treatment", zh: "手部护理" }, price: 50, color: "#c59b81" },
-    { id: 'hand2', icon: Sparkles, name: { en: "Hand nourishing", zh: "手部保养" }, price: 40, color: "#76a88a" },
-    { id: 'eye', icon: Eye, name: { en: "Eye care treatment", zh: "眼部护理" }, price: 50, color: "#d6b9a5" },
-    { id: 'face', icon: Smile, name: { en: "Basic facial care", zh: "基础面部护理" }, price: 55, color: "#9bc4aa" },
-    { id: 'fatigue', icon: Battery, name: { en: "Fatigue relief", zh: "疲劳护理" }, price: 40, color: "#b07e62" },
-    { id: 'foot', icon: Footprints, name: { en: "Foot care treatment", zh: "足部保养" }, price: 40, color: "#588c6e" },
-    { id: 'mask', icon: Droplets, name: { en: "Hydrating mask", zh: "面部水膜" }, price: 30, color: "#c59b81" },
-    { id: 'oil', icon: Leaf, name: { en: "CBD oil add-on", zh: "CBD 油" }, price: 20, color: "#76a88a" },
-    { id: 'meridian', icon: Activity, name: { en: "Meridian relaxation", zh: "通经络舒筋" }, price: 30, color: "#d6b9a5" }
+    { id: 'arm', icon: Activity, name: { en: "Arm Lymphatic Drainage", zh: "手臂淋巴排毒" }, price: 50, color: "#b07e62" },
+    { id: 'cbd', icon: Leaf, name: { en: "CBD Oil", zh: "CBD精油" }, price: 30, color: "#588c6e" },
+    { id: 'eye', icon: Eye, name: { en: "Eye Revitalizing Care", zh: "眼部焕活护理" }, price: 50, color: "#c59b81" },
+    { id: 'hand', icon: Hand, name: { en: "Hand Nourishing Treatment", zh: "手部滋养护理" }, price: 40, color: "#76a88a" },
+    { id: 'head', icon: Crown, name: { en: "Head Gua Sha Therapy", zh: "头部刮痧" }, price: 30, color: "#d6b9a5" },
+    { id: 'heat', icon: Zap, name: { en: "Heat Therapy", zh: "热疗" }, price: 50, color: "#9bc4aa" },
+    { id: 'joint', icon: Battery, name: { en: "Joint Relief Essential Oil (Horse Oil)", zh: "关节舒缓精油（马油）" }, price: 10, color: "#b07e62" },
+    { id: 'rose', icon: Droplets, name: { en: "Rose Oil", zh: "玫瑰精油" }, price: 10, color: "#588c6e" },
+    { id: 'sour', icon: User, name: { en: "Sour Muscle Oil", zh: "酸痛肌肉精油" }, price: 20, color: "#c59b81" }
   ], []);
 
   // Calculate coordinates for SVG paths
