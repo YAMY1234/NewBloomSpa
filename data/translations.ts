@@ -366,8 +366,8 @@ export const translations = {
         subtitle2: "Please feel free to contact us in the following ways.",
         address: {
           title: "Address",
-          line1: "123 Wellness Street",
-          line2: "San Francisco, CA 94102",
+          line1: "1829 S Cedar Lake Rd",
+          line2: "Round Lake, IL 60073",
           line3: "United States"
         },
         phone: {
@@ -410,11 +410,11 @@ export const translations = {
       },
       map: {
         title: "How to Find Us",
-        subtitle: "Located in downtown San Francisco, convenient transportation, easy parking",
+        subtitle: "Located in Round Lake, IL, convenient location with easy parking",
         address: {
           title: "Address",
-          line1: "123 Wellness Street",
-          line2: "San Francisco, CA 94102"
+          line1: "1829 S Cedar Lake Rd",
+          line2: "Round Lake, IL 60073"
         },
         parking: {
           title: "Parking Info",
@@ -422,9 +422,9 @@ export const translations = {
           line2: "Street parking also convenient"
         },
         transit: {
-          title: "Public Transit",
-          line1: "Muni Lines: 5, 21, 31",
-          line2: "BART: Civic Center Station"
+          title: "Contact",
+          line1: "Phone: (224) 800-9337",
+          line2: "Email: newbloomspa@gmail.com"
         }
       },
       faq: {
@@ -872,8 +872,8 @@ export const translations = {
         subtitle2: "请随时通过以下方式联系我们。",
         address: {
           title: "地址",
-          line1: "123 Wellness Street",
-          line2: "San Francisco, CA 94102",
+          line1: "1829 S Cedar Lake Rd",
+          line2: "Round Lake, IL 60073",
           line3: "United States"
         },
         phone: {
@@ -916,11 +916,11 @@ export const translations = {
       },
       map: {
         title: "如何找到我们",
-        subtitle: "我们位于旧金山市中心，交通便利，停车方便",
+        subtitle: "我们位于伊利诺伊州Round Lake，交通便利，停车方便",
         address: {
           title: "地址",
-          line1: "123 Wellness Street",
-          line2: "San Francisco, CA 94102"
+          line1: "1829 S Cedar Lake Rd",
+          line2: "Round Lake, IL 60073"
         },
         parking: {
           title: "停车信息",
@@ -928,9 +928,9 @@ export const translations = {
           line2: "街边停车也很方便"
         },
         transit: {
-          title: "公共交通",
-          line1: "Muni 线路: 5, 21, 31",
-          line2: "BART: Civic Center 站"
+          title: "联系方式",
+          line1: "电话: (224) 800-9337",
+          line2: "邮箱: newbloomspa@gmail.com"
         }
       },
       faq: {

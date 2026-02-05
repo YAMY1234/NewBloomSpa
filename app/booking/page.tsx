@@ -206,7 +206,7 @@ export default function BookingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <a
-                href="tel:+14155551234"
+                href="tel:+12248009337"
                 className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
@@ -214,11 +214,11 @@ export default function BookingPage() {
                 </div>
                 <div className="text-left">
                   <div className="text-sm text-gray-500">{t.booking.help.phone}</div>
-                  <div className="font-semibold">(415) 555-1234</div>
+                  <div className="font-semibold">(224) 800-9337</div>
                 </div>
               </a>
               <a
-                href="mailto:info@newbloomspa.com"
+                href="mailto:newbloomspa@gmail.com"
                 className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
@@ -226,7 +226,7 @@ export default function BookingPage() {
                 </div>
                 <div className="text-left">
                   <div className="text-sm text-gray-500">{t.booking.help.email}</div>
-                  <div className="font-semibold">info@newbloomspa.com</div>
+                  <div className="font-semibold">newbloomspa@gmail.com</div>
                 </div>
               </a>
             </div>

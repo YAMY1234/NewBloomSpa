@@ -106,10 +106,10 @@ export default function ContactPage() {
                       {t.contact.info.phone.title}
                     </h3>
                     <a 
-                      href="tel:+14155551234"
+                      href="tel:+12248009337"
                       className="text-gray-600 hover:text-primary-600 transition-colors"
                     >
-                      (415) 555-1234
+                      (224) 800-9337
                     </a>
                     <p className="text-sm text-gray-500 mt-1">
                       {t.contact.info.phone.hours}
@@ -132,10 +132,10 @@ export default function ContactPage() {
                       {t.contact.info.email.title}
                     </h3>
                     <a 
-                      href="mailto:info@newbloomspa.com"
+                      href="mailto:newbloomspa@gmail.com"
                       className="text-gray-600 hover:text-primary-600 transition-colors"
                     >
-                      info@newbloomspa.com
+                      newbloomspa@gmail.com
                     </a>
                     <p className="text-sm text-gray-500 mt-1">
                       {t.contact.info.email.response}
@@ -304,7 +304,7 @@ export default function ContactPage() {
             {/* Google Maps Embed */}
             <div className="w-full h-96 bg-gray-200">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019094726473!2d-122.41941492346444!3d37.77492971866921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter%20HQ!5e0!3m2!1sen!2sus!4v1699564800000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2954.8893846961396!2d-88.11096768454797!3d42.35694974918647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880f9c2e6f8e5b7d%3A0x1234567890abcdef!2s1829%20S%20Cedar%20Lake%20Rd%2C%20Round%20Lake%2C%20IL%2060073!5e0!3m2!1sen!2sus!4v1699564800000!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

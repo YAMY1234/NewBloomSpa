@@ -92,20 +92,20 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
                 <span className="text-sage-200 text-sm">
-                  123 Wellness Street<br />
-                  San Francisco, CA 94102
+                  1829 S Cedar Lake Rd<br />
+                  Round Lake, IL 60073
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="tel:+14155551234" className="text-sage-200 hover:text-primary-400 transition-colors">
-                  (415) 555-1234
+                <a href="tel:+12248009337" className="text-sage-200 hover:text-primary-400 transition-colors">
+                  (224) 800-9337
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="mailto:info@newbloomspa.com" className="text-sage-200 hover:text-primary-400 transition-colors">
-                  info@newbloomspa.com
+                <a href="mailto:newbloomspa@gmail.com" className="text-sage-200 hover:text-primary-400 transition-colors">
+                  newbloomspa@gmail.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">
