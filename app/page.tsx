@@ -10,7 +10,8 @@ import {
   Award,
   Users,
   ArrowRight,
-  CheckCircle2
+  Gift,
+  Percent
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/data/translations";
@@ -29,60 +30,99 @@ const stagger = {
   }
 };
 
+// Featured services data
+const featuredServicesData = [
+  {
+    id: "couples-60",
+    title: { en: "Couples Massage (60 min)", zh: "双人按摩 (60分钟)" },
+    subtitle: { en: "$80 Each", zh: "每人 $80" },
+    duration: { en: "1 hr", zh: "1小时" },
+    price: "$160",
+    description: {
+      en: "Enjoy a deeply relaxing massage experience side by side in a calm and private setting. Perfect for celebrating special occasions.",
+      zh: "在宁静私密的环境中并排享受深度放松的按摩体验。非常适合庆祝特别的日子。"
+    },
+    image: "/images/body.jpg",
+    hasDiscount: true,
+    featured: true
+  },
+  {
+    id: "classic-60",
+    title: { en: "Classic Therapeutic Massage (60 min)", zh: "经典理疗按摩 (60分钟)" },
+    duration: { en: "1 hr", zh: "1小时" },
+    price: "$80",
+    description: {
+      en: "A full-body relaxation massage that helps ease muscle tension, improve circulation, and promote overall well-being.",
+      zh: "全身放松按摩，有助于缓解肌肉紧张、改善循环并促进整体健康。"
+    },
+    image: "/images/body2.jpg",
+    hasDiscount: true
+  },
+  {
+    id: "signature-60",
+    title: { en: "Signature Total Relief Massage (60 min)", zh: "招牌全身舒缓按摩 (60分钟)" },
+    duration: { en: "1 hr", zh: "1小时" },
+    price: "$100",
+    description: {
+      en: "Our signature full-body massage focuses on relieving accumulated tension and restoring natural balance.",
+      zh: "我们的招牌全身按摩专注于缓解累积的紧张并恢复自然平衡。"
+    },
+    image: "/images/head.jpg",
+    hasDiscount: true
+  },
+  {
+    id: "foot-40",
+    title: { en: "Foot Care Therapy (40 min)", zh: "足部护理 (40分钟)" },
+    duration: { en: "40 mins", zh: "40分钟" },
+    price: "$50",
+    description: {
+      en: "A soothing foot care treatment that helps release tension and promote relaxation throughout the body.",
+      zh: "舒缓的足部护理，有助于释放紧张并促进全身放松。"
+    },
+    image: "/images/foot.jpg",
+    hasDiscount: false
+  },
+  {
+    id: "facial-30",
+    title: { en: "Essential Facial Care (30 min)", zh: "基础面部护理 (30分钟)" },
+    duration: { en: "30 mins", zh: "30分钟" },
+    price: "$50",
+    description: {
+      en: "A classic facial treatment focused on deep cleansing and gentle exfoliation. Helps refresh the skin.",
+      zh: "经典面部护理，专注于深层清洁和温和去角质。有助于清新肌肤。"
+    },
+    image: "/images/head2.jpg",
+    hasDiscount: false
+  },
+  {
+    id: "facial-60",
+    title: { en: "Professional Facial Treatment (60 min)", zh: "专业面部护理 (60分钟)" },
+    duration: { en: "1 hr", zh: "1小时" },
+    price: "$80",
+    description: {
+      en: "A comprehensive professional facial that includes deep cleansing, exfoliation, mask, and massage.",
+      zh: "全面的专业面部护理，包括深层清洁、去角质、面膜和按摩。"
+    },
+    image: "/images/head4.jpg",
+    hasDiscount: true
+  }
+];
+
 export default function Home() {
   const { language } = useLanguage();
   const t = translations[language];
+  const lang = language as 'en' | 'zh';
 
-  const services = [
-    {
-      title: t.services.massage.swedish.title,
-      duration: t.services.massage.swedish.duration,
-      price: t.services.massage.swedish.price,
-      description: t.services.massage.swedish.description,
-      features: [t.home.featuredServices.features.fullRelax, t.home.featuredServices.features.stressRelief, t.home.featuredServices.features.improveSleep],
-      image: "/images/body.jpg"
+  const texts = {
+    valentine: {
+      badge: { en: "Valentine's Special", zh: "情人节特惠" },
+      title: { en: "15% OFF", zh: "享85折优惠" },
+      subtitle: { en: "All massage services 60 min or longer", zh: "所有60分钟及以上按摩服务" },
+      note: { en: "Limited time offer!", zh: "限时优惠！" }
     },
-    {
-      title: t.services.massage.deepTissue.title,
-      duration: t.services.massage.deepTissue.duration,
-      price: t.services.massage.deepTissue.price,
-      description: t.services.massage.deepTissue.description,
-      features: [t.home.featuredServices.features.deepRelax, t.home.featuredServices.features.painRelief, t.home.featuredServices.features.flexibility],
-      image: "/images/body2.jpg"
-    },
-    {
-      title: t.services.facial.classic.title,
-      duration: t.services.facial.classic.duration,
-      price: t.services.facial.classic.price,
-      description: t.services.facial.classic.description,
-      features: [t.home.featuredServices.features.deepCleanse, t.home.featuredServices.features.hydration, t.home.featuredServices.features.antiAging],
-      image: "/images/head.jpg"
-    },
-    {
-      title: t.services.body.scrub.title,
-      duration: t.services.body.scrub.duration,
-      price: t.services.body.scrub.price,
-      description: t.services.body.scrub.description,
-      features: [t.home.featuredServices.features.exfoliate, t.home.featuredServices.features.smoothSkin, t.home.featuredServices.features.metabolism],
-      image: "/images/head2.jpg"
-    },
-    {
-      title: t.services.massage.aromatherapy.title,
-      duration: t.services.massage.aromatherapy.duration,
-      price: t.services.massage.aromatherapy.price,
-      description: t.services.massage.aromatherapy.description,
-      features: [t.home.featuredServices.features.balance, t.home.featuredServices.features.emotional, t.home.featuredServices.features.immunity],
-      image: "/images/head4.jpg"
-    },
-    {
-      title: t.services.massage.hotStone.title,
-      duration: t.services.massage.hotStone.duration,
-      price: t.services.massage.hotStone.price,
-      description: t.services.massage.hotStone.description,
-      features: [t.home.featuredServices.features.deepRelax, t.home.featuredServices.features.circulation, t.home.featuredServices.features.energy],
-      image: "/images/foot.jpg"
-    }
-  ];
+    discount: { en: "15% OFF", zh: "85折" },
+    valentinePick: { en: "Valentine's Pick", zh: "情人节推荐" }
+  };
 
   return (
     <div className="overflow-hidden">
@@ -169,6 +209,56 @@ export default function Home() {
         >
           <div className="w-6 h-10 rounded-full border-2 border-primary-600 flex justify-center">
             <div className="w-1.5 h-3 bg-primary-600 rounded-full mt-2 animate-bounce" />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Valentine's Day Promotion Banner */}
+      <section className="relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 py-6 md:py-8"
+        >
+          <div className="absolute inset-0 opacity-20">
+            <div className="w-full h-full" style={{ backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 10px)' }} />
+          </div>
+          
+          <div className="container-custom relative">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-white text-center md:text-left">
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="flex items-center gap-2"
+              >
+                <Heart className="w-8 h-8 md:w-10 md:h-10 fill-white" />
+                <Gift className="w-8 h-8 md:w-10 md:h-10" />
+                <Heart className="w-8 h-8 md:w-10 md:h-10 fill-white" />
+              </motion.div>
+              
+              <div className="space-y-1">
+                <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-medium mb-2">
+                  💕 {texts.valentine.badge[lang]} 💕
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center md:justify-start gap-3">
+                  <Percent className="w-6 h-6" />
+                  {texts.valentine.title[lang]} - {texts.valentine.subtitle[lang]}
+                </h2>
+              </div>
+              
+              <motion.a
+                href="https://new-bloom-spa.square.site/"
+                target="_blank"
+                rel="noopener noreferrer"
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="bg-white text-rose-600 px-6 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-rose-50 transition-colors"
+              >
+                {texts.valentine.note[lang]}
+              </motion.a>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -272,45 +362,69 @@ export default function Home() {
             variants={stagger}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {services.map((service, index) => (
+            {featuredServicesData.map((service) => (
               <motion.div
-                key={index}
+                key={service.id}
                 variants={fadeInUp}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                className={`bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative ${service.featured ? 'ring-2 ring-rose-400' : ''}`}
               >
+                {/* Discount Badge */}
+                {service.hasDiscount && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <motion.div
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg flex items-center gap-1"
+                    >
+                      <Heart className="w-3 h-3 fill-white" />
+                      {texts.discount[lang]}
+                    </motion.div>
+                  </div>
+                )}
+                
+                {/* Featured Badge */}
+                {service.featured && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <div className="bg-gradient-to-r from-rose-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                      💕 {texts.valentinePick[lang]}
+                    </div>
+                  </div>
+                )}
+                
                 <div 
                   className="h-48 bg-cover bg-center"
                   style={{ backgroundImage: `url('${service.image}')` }}
                 />
                 <div className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-2xl font-serif font-semibold text-gray-900">
-                      {service.title}
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-serif font-semibold text-gray-900 flex-1 pr-2">
+                      {service.title[lang]}
                     </h3>
-                    <span className="text-2xl font-bold text-primary-600">
+                    <span className="text-xl font-bold text-primary-600 whitespace-nowrap">
                       {service.price}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500 mb-4 flex items-center">
+                  {service.subtitle && (
+                    <p className="text-sm text-rose-500 font-medium mb-2">
+                      {service.subtitle[lang]}
+                    </p>
+                  )}
+                  <p className="text-sm text-gray-500 mb-3 flex items-center">
                     <Clock className="w-4 h-4 mr-2" />
-                    {service.duration}
+                    {service.duration[lang]}
                   </p>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    {service.description}
+                  <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+                    {service.description[lang]}
                   </p>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle2 className="w-4 h-4 text-primary-600 mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
                   <a
                     href="https://new-bloom-spa.square.site/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-center py-3 px-6 bg-sage-600 text-white rounded-full font-medium hover:bg-sage-700 transition-colors"
+                    className={`block text-center py-3 px-6 rounded-full font-medium transition-colors ${
+                      service.hasDiscount 
+                        ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white hover:from-rose-600 hover:to-pink-600' 
+                        : 'bg-sage-600 text-white hover:bg-sage-700'
+                    }`}
                   >
                     {t.home.hero.bookNow}
                   </a>
