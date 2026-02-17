@@ -13,7 +13,8 @@ import {
   Droplets, 
   Leaf, 
   Activity,
-  Zap
+  Zap,
+  RefreshCw
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/data/translations";
@@ -102,6 +103,12 @@ export default function LuckyDrawPage() {
     setResult(`${prizeName} ($${prizes[selectedIndex].price})`);
     setIsSpinning(false);
     setHasSpun(true);
+  };
+
+  const resetWheel = () => {
+    setResult(null);
+    setHasSpun(false);
+    controls.set({ rotate: 0 });
   };
 
   return (
@@ -270,9 +277,17 @@ export default function LuckyDrawPage() {
                   <p className="text-gray-500 mb-2">
                     {t.luckyDraw.result.claim}
                   </p>
-                  <p className="text-sm text-gray-400 italic">
+                  <p className="text-sm text-gray-400 italic mb-6">
                     {t.luckyDraw.result.disclaimer}
                   </p>
+                  
+                  <button
+                    onClick={resetWheel}
+                    className="flex items-center justify-center gap-2 px-6 py-3 bg-sage-600 text-white rounded-full font-medium hover:bg-sage-700 transition-all duration-300 hover:scale-105"
+                  >
+                    <RefreshCw className="w-5 h-5" />
+                    {language === 'en' ? 'Try Again' : '再试一次'}
+                  </button>
                 </motion.div>
               )}
             </div>
