@@ -167,18 +167,13 @@ export default function BookingPage() {
                     href={SQUARE_APPOINTMENTS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-event-name="book"
+                    data-event-location="booking-square-cta"
                     className="inline-block px-10 py-4 bg-sage-600 text-white rounded-full font-bold text-lg hover:bg-sage-700 transition-all duration-300 hover:shadow-2xl hover:scale-105"
                   >
                     {t.booking.square.button}
                   </a>
 
-                  <div className="pt-6 border-t border-gray-300">
-                    <p className="text-sm text-gray-500">
-                      {t.booking.square.tip}
-                      <br />
-                      {t.booking.square.tip2} <code className="bg-gray-200 px-2 py-1 rounded">app/booking/page.tsx</code>
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -207,6 +202,8 @@ export default function BookingPage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <a
                 href="tel:+12248009337"
+                data-event-name="phone"
+                data-event-location="booking-help"
                 className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
@@ -219,6 +216,8 @@ export default function BookingPage() {
               </a>
               <a
                 href="mailto:newbloomspa@gmail.com"
+                data-event-name="email"
+                data-event-location="booking-help"
                 className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
@@ -234,48 +233,6 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* Cancellation Policy */}
-      <section className="section-padding bg-gradient-to-br from-sage-50 to-primary-50">
-        <div className="container-custom max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
-          >
-            <h3 className="text-2xl font-serif font-semibold text-gray-900 mb-6">
-              {t.booking.policy.title}
-            </h3>
-            <div className="space-y-4 text-gray-600">
-              <div className="flex items-start">
-                <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0 mt-0.5" />
-                <p>
-                  <strong>{t.booking.policy.early.title}</strong> {t.booking.policy.early.description}
-                </p>
-              </div>
-              <div className="flex items-start">
-                <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0 mt-0.5" />
-                <p>
-                  <strong>{t.booking.policy.cancel.title}</strong> {t.booking.policy.cancel.description}
-                </p>
-              </div>
-              <div className="flex items-start">
-                <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0 mt-0.5" />
-                <p>
-                  <strong>{t.booking.policy.health.title}</strong> {t.booking.policy.health.description}
-                </p>
-              </div>
-              <div className="flex items-start">
-                <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0 mt-0.5" />
-                <p>
-                  <strong>{t.booking.policy.firstTime.title}</strong> {t.booking.policy.firstTime.description}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

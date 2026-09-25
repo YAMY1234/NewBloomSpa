@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, Heart, Sparkles, Footprints, Gift, Percent, LucideIcon } from "lucide-react";
+import { Clock, Heart, Sparkles, Footprints, LucideIcon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeInUp = {
@@ -32,8 +32,6 @@ interface ServiceItem {
   price: string;
   priceNote?: BilingualText;
   description: BilingualText;
-  hasDiscount: boolean;
-  featured?: boolean;
 }
 
 interface ServiceCategory {
@@ -58,11 +56,21 @@ const servicesData: Record<string, ServiceCategory> = {
         price: "$160.00",
         priceNote: { en: "for two", zh: "双人价" },
         description: {
-          en: "Our Couple Massage is designed for two people to enjoy a deeply relaxing massage experience side by side in a calm and private setting. Whether you're celebrating a special occasion or simply taking time to recharge together, this session allows you to slow down, release tension, and reconnect through shared relaxation.",
-          zh: "我们的双人按摩专为两人设计，在宁静私密的环境中并排享受深度放松的按摩体验。无论您是在庆祝特别的日子，还是只是想一起放松身心，这个疗程让您放慢脚步，释放紧张，通过共同的放松重新连接。"
+          en: "A side-by-side massage session for two in a calm, private setting. Pressure can be customized for each guest.",
+          zh: "两人在宁静私密的环境中并排享受按摩，每位客人的力度均可按需求调整。"
         },
-        hasDiscount: true,
-        featured: true
+      },
+      {
+        id: "couples-90",
+        title: { en: "Couples Massage (90 min)", zh: "双人按摩 (90分钟)" },
+        subtitle: { en: "$120 Each", zh: "每人 $120" },
+        duration: { en: "1 hr 30 mins", zh: "1小时30分钟" },
+        price: "$240.00",
+        priceNote: { en: "for two", zh: "双人价" },
+        description: {
+          en: "A longer side-by-side massage session for two in a calm, private setting. Pressure can be customized for each guest.",
+          zh: "两人在宁静私密的环境中并排享受延长版按摩，每位客人的力度均可按需求调整。"
+        },
       },
       {
         id: "classic-30",
@@ -71,10 +79,9 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "30 mins", zh: "30分钟" },
         price: "$50.00",
         description: {
-          en: "A focused relaxation massage designed to quickly release tension and calm the body. Ideal for stress relief, muscle relaxation, or a refreshing break during a busy day. Pressure can be customized to your comfort level.",
-          zh: "专注的放松按摩，旨在快速释放紧张并舒缓身体。非常适合缓解压力、放松肌肉或在忙碌的一天中恢复精力。力度可根据您的舒适度进行调整。"
+          en: "A focused massage session for selected areas. Pressure can be customized to your comfort level.",
+          zh: "针对所选部位的按摩疗程，力度可根据您的舒适度进行调整。"
         },
-        hasDiscount: false
       },
       {
         id: "classic-60",
@@ -83,10 +90,9 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "1 hr", zh: "1小时" },
         price: "$80.00",
         description: {
-          en: "A full-body relaxation massage that helps ease muscle tension, improve circulation, and promote overall well-being. Perfect for unwinding both physically and mentally, leaving you feeling balanced and refreshed.",
-          zh: "全身放松按摩，有助于缓解肌肉紧张、改善循环并促进整体健康。非常适合身心放松，让您感到平衡和清爽。"
+          en: "A full-body massage session with light, medium, or deep pressure based on your preference.",
+          zh: "全身按摩疗程，可根据您的偏好选择轻柔、中等或深层力度。"
         },
-        hasDiscount: true
       },
       {
         id: "classic-90",
@@ -95,34 +101,31 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "1 hr 30 mins", zh: "1小时30分钟" },
         price: "$120.00",
         description: {
-          en: "An extended relaxation experience that allows deeper muscle release and longer-lasting stress relief. Ideal for those seeking a thorough, calming treatment that restores comfort and relaxation throughout the entire body.",
-          zh: "延长的放松体验，可实现更深层的肌肉释放和更持久的压力缓解。非常适合寻求彻底、舒缓疗程的人，恢复全身的舒适和放松。"
+          en: "A longer full-body massage session with additional time and customizable pressure.",
+          zh: "延长版全身按摩，提供更多时间，力度可按需求调整。"
         },
-        hasDiscount: true
       },
       {
         id: "signature-60",
         title: { en: "Signature Total Relief Massage (60 min)", zh: "招牌全身舒缓按摩 (60分钟)" },
-        subtitle: { en: "Full body total relief massage", zh: "全身深度舒缓按摩" },
+        subtitle: { en: "Signature full-body session", zh: "招牌全身按摩" },
         duration: { en: "1 hr", zh: "1小时" },
         price: "$100.00",
         description: {
-          en: "Our signature full-body massage focuses on relieving accumulated tension and restoring natural balance. Thoughtfully designed techniques target stress-prone areas to promote deep relaxation and total body comfort.",
-          zh: "我们的招牌全身按摩专注于缓解累积的紧张并恢复自然平衡。精心设计的技术针对容易紧张的部位，促进深度放松和全身舒适。"
+          en: "A signature full-body massage session with focused attention to the areas you identify at check-in.",
+          zh: "招牌全身按摩，可在到店沟通时说明希望重点关注的部位。"
         },
-        hasDiscount: true
       },
       {
         id: "signature-90",
         title: { en: "Signature Total Relief Massage (90 min)", zh: "招牌全身舒缓按摩 (90分钟)" },
-        subtitle: { en: "Full body total relief massage", zh: "全身深度舒缓按摩" },
+        subtitle: { en: "Signature full-body session", zh: "招牌全身按摩" },
         duration: { en: "1 hr 30 mins", zh: "1小时30分钟" },
         price: "$140.00",
         description: {
-          en: "A premium, immersive massage experience that delivers complete relaxation from head to toe. This extended signature treatment provides deeper relief, enhanced circulation, and a lasting sense of renewal and calm.",
-          zh: "奢华沉浸式按摩体验，从头到脚带来完全的放松。这款延长版招牌疗程提供更深层的舒缓、增强循环，以及持久的焕新和宁静感。"
+          en: "A longer signature full-body massage session with additional time for the areas you identify at check-in.",
+          zh: "延长版招牌全身按摩，为到店沟通时指定的重点部位提供更多时间。"
         },
-        hasDiscount: true
       },
       {
         id: "lymphatic-60",
@@ -130,10 +133,9 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "1 hr", zh: "1小时" },
         price: "$100.00",
         description: {
-          en: "A gentle, rhythmic massage technique that stimulates the lymphatic system to help eliminate toxins and reduce fluid retention. Promotes detoxification and supports immune health.",
-          zh: "轻柔有节奏的按摩技术，刺激淋巴系统帮助排除毒素并减少水肿。促进排毒并支持免疫健康。"
+          en: "A full-body session using gentle, rhythmic lymphatic-drainage massage techniques in a calm setting.",
+          zh: "在宁静环境中使用轻柔、有节奏的淋巴引流按摩手法进行全身护理。"
         },
-        hasDiscount: true
       },
       {
         id: "lymphatic-90",
@@ -141,34 +143,31 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "1 hr 30 mins", zh: "1小时30分钟" },
         price: "$140.00",
         description: {
-          en: "An extended lymphatic drainage session for comprehensive detoxification and deep relaxation. Perfect for those seeking thorough body cleansing and rejuvenation.",
-          zh: "延长版淋巴引流疗程，提供全面排毒和深度放松。非常适合寻求彻底身体净化和焕新的人。"
+          en: "A longer full-body session using gentle, rhythmic lymphatic-drainage massage techniques.",
+          zh: "延长版全身护理，使用轻柔、有节奏的淋巴引流按摩手法。"
         },
-        hasDiscount: true
       },
       {
         id: "neck-shoulder",
         title: { en: "Neck & Shoulder Care", zh: "颈肩护理" },
-        subtitle: { en: "Gentle lymphatic massage to reduce tension & puffiness", zh: "轻柔淋巴按摩，缓解紧张与浮肿" },
+        subtitle: { en: "Gentle neck and shoulder session", zh: "轻柔颈肩护理" },
         duration: { en: "30 mins", zh: "30分钟" },
         price: "$50.00",
         description: {
-          en: "Focuses on the neck and shoulder area using light, soothing techniques to encourage lymphatic flow. Helps relieve daily stiffness while improving comfort and mobility.",
-          zh: "专注于颈部和肩部区域，使用轻柔舒缓的技术促进淋巴流动。有助于缓解日常僵硬，同时改善舒适度和灵活性。"
+          en: "A focused neck and shoulder session using light, soothing massage techniques.",
+          zh: "专注于颈部和肩部，采用轻柔舒缓的按摩手法。"
         },
-        hasDiscount: false
       },
       {
         id: "cupping",
         title: { en: "Cupping Therapy", zh: "拔罐疗法" },
-        subtitle: { en: "Improve circulation & balance", zh: "改善循环与平衡" },
+        subtitle: { en: "Traditional cupping session", zh: "传统拔罐护理" },
         duration: { en: "30 mins", zh: "30分钟" },
         price: "$50.00",
         description: {
-          en: "A traditional cupping technique designed to stimulate circulation and relieve muscle tension. Supports relaxation and promotes a balanced, refreshed feeling.",
-          zh: "传统拔罐技术，旨在刺激循环并缓解肌肉紧张。支持放松并促进平衡、清爽的感觉。"
+          en: "A 30-minute session using traditional cupping techniques.",
+          zh: "使用传统拔罐手法的 30 分钟护理。"
         },
-        hasDiscount: false
       }
     ]
   },
@@ -183,10 +182,9 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "40 mins", zh: "40分钟" },
         price: "$50.00",
         description: {
-          en: "A soothing foot care treatment that helps release tension and promote relaxation throughout the body. Ideal for restoring comfort after long days on your feet.",
-          zh: "舒缓的足部护理，有助于释放紧张并促进全身放松。非常适合在长时间站立后恢复舒适。"
+          en: "A 40-minute foot care session in a calm setting.",
+          zh: "在宁静环境中进行的 40 分钟足部护理。"
         },
-        hasDiscount: false
       },
       {
         id: "foot-60",
@@ -194,21 +192,29 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "1 hr", zh: "1小时" },
         price: "$65.00",
         description: {
-          en: "An extended foot therapy session with premium techniques for deeper relaxation and rejuvenation. Includes comprehensive foot massage and care.",
-          zh: "延长版足部疗程，采用高级技术实现更深层的放松和焕新。包括全面的足部按摩和护理。"
+          en: "A longer foot care session with additional time for massage and care.",
+          zh: "延长版足部护理，为足部按摩和护理提供更多时间。"
         },
-        hasDiscount: true
       },
       {
-        id: "foot-body",
-        title: { en: "Foot & Body Combo", zh: "足部+身体组合" },
+        id: "foot-body-60",
+        title: { en: "Foot & Body Combo (60 min)", zh: "足部+身体组合 (60分钟)" },
         duration: { en: "1 hr", zh: "1小时" },
         price: "$80.00",
         description: {
-          en: "A perfect combination of foot therapy and body massage for complete relaxation from head to toe.",
-          zh: "足部疗法与身体按摩的完美结合，从头到脚带来完全的放松。"
+          en: "A combined foot care and body massage session.",
+          zh: "足部护理与身体按摩的组合疗程。"
         },
-        hasDiscount: true
+      },
+      {
+        id: "foot-body-90",
+        title: { en: "Foot & Body Combo (90 min)", zh: "足部+身体组合 (90分钟)" },
+        duration: { en: "1 hr 30 mins", zh: "1小时30分钟" },
+        price: "$120.00",
+        description: {
+          en: "A longer combined foot care and body massage session.",
+          zh: "延长版足部护理与身体按摩组合疗程。"
+        },
       }
     ]
   },
@@ -220,14 +226,13 @@ const servicesData: Record<string, ServiceCategory> = {
       {
         id: "facial-30",
         title: { en: "Essential Facial Care (30 min)", zh: "基础面部护理 (30分钟)" },
-        subtitle: { en: "Deep cleansing & skin renewal", zh: "深层清洁与肌肤焕新" },
+        subtitle: { en: "Essential facial care", zh: "基础面部护理" },
         duration: { en: "30 mins", zh: "30分钟" },
         price: "$50.00",
         description: {
-          en: "A classic facial treatment focused on deep cleansing and gentle exfoliation. Helps refresh the skin, improve clarity, and support natural renewal.",
-          zh: "经典面部护理，专注于深层清洁和温和去角质。有助于清新肌肤、改善透明度并支持自然焕新。"
+          en: "A 30-minute essential facial care session.",
+          zh: "30 分钟基础面部护理。"
         },
-        hasDiscount: false
       },
       {
         id: "facial-60",
@@ -235,10 +240,9 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "1 hr", zh: "1小时" },
         price: "$80.00",
         description: {
-          en: "A comprehensive professional facial that includes deep cleansing, exfoliation, mask, and massage for radiant, healthy-looking skin.",
-          zh: "全面的专业面部护理，包括深层清洁、去角质、面膜和按摩，让肌肤焕发健康光彩。"
+          en: "A 60-minute professional facial care session with time for multiple care steps.",
+          zh: "60 分钟专业面部护理，为多项护理步骤预留时间。"
         },
-        hasDiscount: true
       },
       {
         id: "facial-90",
@@ -246,21 +250,29 @@ const servicesData: Record<string, ServiceCategory> = {
         duration: { en: "1 hr 30 mins", zh: "1小时30分钟" },
         price: "$120.00",
         description: {
-          en: "An indulgent extended facial experience with premium products and techniques. Includes deep treatment, relaxing massage, and specialized care for optimal results.",
-          zh: "奢华延长版面部体验，采用高级产品和技术。包括深层护理、放松按摩和专业护理，以获得最佳效果。"
+          en: "A 90-minute facial care session with additional time for a more unhurried experience.",
+          zh: "90 分钟面部护理，提供更充裕的护理时间。"
         },
-        hasDiscount: true
       },
       {
-        id: "facial-body",
-        title: { en: "Facial & Body Combo", zh: "面部+身体组合" },
+        id: "facial-body-60",
+        title: { en: "Facial & Body Combo (60 min)", zh: "面部+身体组合 (60分钟)" },
         duration: { en: "1 hr", zh: "1小时" },
         price: "$80.00",
         description: {
-          en: "The best of both worlds - combining facial care with body massage for a complete pampering experience.",
-          zh: "两全其美 - 将面部护理与身体按摩相结合，带来完整的呵护体验。"
+          en: "A combined facial care and body massage session.",
+          zh: "面部护理与身体按摩的组合疗程。"
         },
-        hasDiscount: true
+      },
+      {
+        id: "facial-body-90",
+        title: { en: "Facial & Body Combo (90 min)", zh: "面部+身体组合 (90分钟)" },
+        duration: { en: "1 hr 30 mins", zh: "1小时30分钟" },
+        price: "$120.00",
+        description: {
+          en: "A longer combined facial care and body massage session.",
+          zh: "延长版面部护理与身体按摩组合疗程。"
+        },
       }
     ]
   }
@@ -275,13 +287,6 @@ export default function ServicesPage() {
       title: { en: "Our Services", zh: "服务项目" },
       subtitle: { en: "Professional care services for your perfect relaxation experience", zh: "专业的护理服务，为您打造完美的放松体验" }
     },
-    valentine: {
-      badge: { en: "Valentine's Special", zh: "情人节特惠" },
-      title: { en: "15% OFF", zh: "享85折优惠" },
-      subtitle: { en: "All massage services 60 min or longer", zh: "所有60分钟及以上按摩服务" },
-      note: { en: "Limited time offer · Book now!", zh: "限时优惠 · 立即预约！" }
-    },
-    discount: { en: "15% OFF", zh: "85折" },
     bookNow: { en: "Book Now", zh: "立即预约" },
     cta: {
       title: { en: "Ready to Begin Your Relaxation Journey?", zh: "准备好开始您的放松之旅了吗？" },
@@ -310,55 +315,6 @@ export default function ServicesPage() {
             </p>
           </motion.div>
         </div>
-      </section>
-
-      {/* Valentine's Day Promotion Banner */}
-      <section className="relative overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 py-8 md:py-10"
-        >
-          <div className="absolute inset-0 opacity-20">
-            <div className="w-full h-full" style={{ backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 10px)' }} />
-          </div>
-          
-          <div className="container-custom relative">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-white text-center md:text-left">
-              <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="flex items-center gap-2"
-              >
-                <Heart className="w-8 h-8 md:w-10 md:h-10 fill-white" />
-                <Gift className="w-8 h-8 md:w-10 md:h-10" />
-                <Heart className="w-8 h-8 md:w-10 md:h-10 fill-white" />
-              </motion.div>
-              
-              <div className="space-y-1">
-                <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-medium mb-2">
-                  💕 {texts.valentine.badge[lang]} 💕
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold flex items-center justify-center md:justify-start gap-3">
-                  <Percent className="w-8 h-8" />
-                  {texts.valentine.title[lang]}
-                </h2>
-                <p className="text-lg md:text-xl text-rose-100">
-                  {texts.valentine.subtitle[lang]}
-                </p>
-              </div>
-              
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="bg-white text-rose-600 px-6 py-3 rounded-full font-bold text-lg shadow-lg"
-              >
-                {texts.valentine.note[lang]}
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
       </section>
 
       {/* Services Sections */}
@@ -402,35 +358,12 @@ export default function ServicesPage() {
                 <motion.div
                   key={service.id}
                   variants={fadeInUp}
-                  className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group relative ${service.featured ? 'ring-2 ring-rose-400' : ''}`}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
                 >
-                  {/* Discount Badge */}
-                  {service.hasDiscount && (
-                    <div className="absolute top-4 right-4 z-10">
-                      <motion.div
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg flex items-center gap-1"
-                      >
-                        <Heart className="w-3 h-3 fill-white" />
-                        {texts.discount[lang]}
-                      </motion.div>
-                    </div>
-                  )}
-                  
-                  {/* Featured Badge for Couples */}
-                  {service.featured && (
-                    <div className="absolute top-4 left-4 z-10">
-                      <div className="bg-gradient-to-r from-rose-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        💕 {lang === 'en' ? "Valentine's Pick" : "情人节推荐"}
-                      </div>
-                    </div>
-                  )}
-                  
                   <div className={`h-3 bg-gradient-to-r ${category.color}`} />
-                  <div className="p-8">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="flex-1 pr-4">
+                  <div className="p-6 sm:p-8">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start mb-4">
+                      <div className="min-w-0 sm:flex-1 sm:pr-4">
                         <h3 className="text-2xl font-serif font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
                           {service.title[lang]}
                         </h3>
@@ -440,7 +373,7 @@ export default function ServicesPage() {
                           </p>
                         )}
                       </div>
-                      <div className="text-right flex-shrink-0">
+                      <div className="text-left sm:text-right flex-shrink-0">
                         <div className="text-2xl font-bold text-primary-600 whitespace-nowrap">
                           {service.price}
                         </div>
@@ -449,7 +382,7 @@ export default function ServicesPage() {
                             {service.priceNote[lang]}
                           </div>
                         )}
-                        <div className="text-sm text-gray-500 flex items-center justify-end mt-1">
+                        <div className="text-sm text-gray-500 flex items-center justify-start sm:justify-end mt-1">
                           <Clock className="w-4 h-4 mr-1" />
                           {service.duration[lang]}
                         </div>
@@ -464,11 +397,10 @@ export default function ServicesPage() {
                       href="https://new-bloom-spa.square.site/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`block text-center py-3 px-6 rounded-full font-medium transition-colors ${
-                        service.hasDiscount 
-                          ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white hover:from-rose-600 hover:to-pink-600' 
-                          : 'bg-sage-600 text-white hover:bg-sage-700'
-                      }`}
+                      data-event-name="book"
+                      data-event-location="services-card"
+                      data-service-id={service.id}
+                      className="block text-center py-3 px-6 rounded-full font-medium bg-sage-600 text-white hover:bg-sage-700 transition-colors"
                     >
                       {texts.bookNow[lang]}
                     </a>
@@ -500,6 +432,8 @@ export default function ServicesPage() {
               href="https://new-bloom-spa.square.site/"
               target="_blank"
               rel="noopener noreferrer"
+              data-event-name="book"
+              data-event-location="services-footer-cta"
               className="inline-block px-10 py-4 bg-white text-sage-600 rounded-full font-bold text-lg hover:bg-sage-50 transition-all duration-300 hover:shadow-2xl hover:scale-105"
             >
               {texts.bookNow[lang]}

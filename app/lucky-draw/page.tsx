@@ -2,16 +2,16 @@
 
 import { useState, useMemo } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { 
-  Gift, 
-  Sparkles, 
-  Crown, 
-  User, 
-  Hand, 
-  Eye, 
-  Battery, 
-  Droplets, 
-  Leaf, 
+import {
+  Gift,
+  Sparkles,
+  Crown,
+  User,
+  Hand,
+  Eye,
+  Battery,
+  Droplets,
+  Leaf,
   Activity,
   Zap,
   RefreshCw
@@ -53,12 +53,12 @@ export default function LuckyDrawPage() {
     return prizes.map((prize, index) => {
       const startAngle = index * segmentAngle;
       const endAngle = (index + 1) * segmentAngle;
-      
+
       const [startX, startY] = getCoordinatesForPercent(startAngle);
       const [endX, endY] = getCoordinatesForPercent(endAngle);
-      
+
       const largeArcFlag = segmentAngle > 0.5 ? 1 : 0;
-      
+
       const pathData = [
         `M 0 0`,
         `L ${startX} ${startY}`,
@@ -85,7 +85,7 @@ export default function LuckyDrawPage() {
     setResult(null);
 
     const selectedIndex = Math.floor(Math.random() * prizes.length);
-    
+
     // Rotation calculation
     const segmentArc = 360 / prizes.length;
     const segmentCenter = selectedIndex * segmentArc + (segmentArc / 2);
@@ -139,28 +139,28 @@ export default function LuckyDrawPage() {
                 <div className="w-8 h-10 bg-gray-800" style={{ clipPath: 'polygon(50% 100%, 0 0, 100% 0)' }} />
               </div>
 
-              <div className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px]">
+              <div className="relative w-full max-w-[320px] aspect-square md:max-w-[450px]">
                 <motion.div
                   className="w-full h-full relative"
                   animate={controls}
                   style={{ transformOrigin: "center" }}
                 >
-                  <svg 
-                    viewBox="-1 -1 2 2" 
-                    className="w-full h-full transform rotate-0" 
+                  <svg
+                    viewBox="-1 -1 2 2"
+                    className="w-full h-full transform rotate-0"
                     style={{ overflow: 'visible' }}
                   >
                     {segments.map((segment) => (
-                      <path 
+                      <path
                         key={segment.id}
-                        d={segment.path} 
-                        fill={segment.color} 
-                        stroke="white" 
-                        strokeWidth="0.01" 
+                        d={segment.path}
+                        fill={segment.color}
+                        stroke="white"
+                        strokeWidth="0.01"
                       />
                     ))}
                   </svg>
-                  
+
                   {/* Icons Layer - Rendered as absolute divs on top to avoid SVG rotation complexity with foreignObject */}
                   {segments.map((segment) => (
                     <div
@@ -170,7 +170,7 @@ export default function LuckyDrawPage() {
                         transform: `rotate(${segment.rotation}deg)`
                       }}
                     >
-                      <div 
+                      <div
                         className="absolute top-1/2 left-1/2 w-8 h-8 -mt-4 -ml-4 flex items-center justify-center text-white"
                         style={{
                           transform: `translate(120px, 0) rotate(90deg)` // Adjust distance from center
@@ -181,7 +181,7 @@ export default function LuckyDrawPage() {
                     </div>
                   ))}
                 </motion.div>
-                
+
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center z-10 border-4 border-sage-100">
                   <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
                     <Sparkles className="w-5 h-5 text-primary-600" />
@@ -202,7 +202,7 @@ export default function LuckyDrawPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                       {prizes.map((prize) => (
                         <div key={prize.id} className="flex items-center p-3 rounded-lg bg-gray-50 border border-gray-100 hover:bg-primary-50 transition-colors">
-                          <div 
+                          <div
                             className="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0 mr-3"
                             style={{ backgroundColor: prize.color }}
                           >
@@ -224,6 +224,8 @@ export default function LuckyDrawPage() {
                   <button
                     onClick={spinWheel}
                     disabled={isSpinning || hasSpun}
+                    data-event-name="lucky-draw-spin"
+                    data-event-location="lucky-draw"
                     className={`w-full py-4 px-8 rounded-full text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg ${
                       isSpinning || hasSpun
                         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -260,29 +262,31 @@ export default function LuckyDrawPage() {
                   >
                     <Gift className="w-20 h-20 text-primary-600 mb-6" />
                   </motion.div>
-                  
+
                   <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">
                     {t.luckyDraw.result.congrats}
                   </h2>
                   <p className="text-xl text-gray-600 mb-8">
                     {t.luckyDraw.result.youWon}
                   </p>
-                  
+
                   <div className="bg-sage-50 py-6 px-8 rounded-2xl mb-8 w-full">
                     <span className="text-2xl md:text-3xl font-bold text-sage-700 block">
                       {result}
                     </span>
                   </div>
-                  
+
                   <p className="text-gray-500 mb-2">
                     {t.luckyDraw.result.claim}
                   </p>
                   <p className="text-sm text-gray-400 italic mb-6">
                     {t.luckyDraw.result.disclaimer}
                   </p>
-                  
+
                   <button
                     onClick={resetWheel}
+                    data-event-name="lucky-draw-reset"
+                    data-event-location="lucky-draw"
                     className="flex items-center justify-center gap-2 px-6 py-3 bg-sage-600 text-white rounded-full font-medium hover:bg-sage-700 transition-all duration-300 hover:scale-105"
                   >
                     <RefreshCw className="w-5 h-5" />

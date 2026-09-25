@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Calendar, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/data/translations";
 
@@ -107,6 +107,8 @@ export default function ContactPage() {
                     </h3>
                     <a 
                       href="tel:+12248009337"
+                      data-event-name="phone"
+                      data-event-location="contact-info"
                       className="text-gray-600 hover:text-primary-600 transition-colors"
                     >
                       (224) 800-9337
@@ -133,6 +135,8 @@ export default function ContactPage() {
                     </h3>
                     <a 
                       href="mailto:newbloomspa@gmail.com"
+                      data-event-name="email"
+                      data-event-location="contact-info"
                       className="text-gray-600 hover:text-primary-600 transition-colors"
                     >
                       newbloomspa@gmail.com
@@ -169,7 +173,7 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Direct Contact Actions */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -180,97 +184,80 @@ export default function ContactPage() {
               <div className="flex items-center space-x-3 mb-6">
                 <MessageCircle className="w-8 h-8 text-primary-600" />
                 <h3 className="text-2xl font-serif font-semibold text-gray-900">
-                  {t.contact.form.title}
+                  {language === "en" ? "Choose How to Reach Us" : "选择联系方式"}
                 </h3>
               </div>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                {language === "en"
+                  ? "Call or email us with questions, or use Square to view current services, prices, and appointment times."
+                  : "如有问题，请致电或发送邮件；也可以通过 Square 查看当前服务、价格和可预约时间。"}
+              </p>
 
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.name} {t.contact.form.required}
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-all"
-                    placeholder={t.contact.form.namePlaceholder}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.email} {t.contact.form.required}
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-all"
-                    placeholder={t.contact.form.emailPlaceholder}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.phone}
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-all"
-                    placeholder={t.contact.form.phonePlaceholder}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.subject} {t.contact.form.required}
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-all"
-                  >
-                    <option value="">{t.contact.form.subjectPlaceholder}</option>
-                    <option value="booking">{t.contact.form.subjectOptions.booking}</option>
-                    <option value="services">{t.contact.form.subjectOptions.services}</option>
-                    <option value="pricing">{t.contact.form.subjectOptions.pricing}</option>
-                    <option value="gift">{t.contact.form.subjectOptions.gift}</option>
-                    <option value="other">{t.contact.form.subjectOptions.other}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.message} {t.contact.form.required}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-600 focus:border-transparent transition-all resize-none"
-                    placeholder={t.contact.form.messagePlaceholder}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full btn-primary flex items-center justify-center space-x-2"
+              <div className="space-y-4">
+                <a
+                  href="tel:+12248009337"
+                  data-event-name="phone"
+                  data-event-location="contact-actions"
+                  className="w-full flex items-center gap-4 rounded-xl bg-white px-5 py-4 text-gray-900 shadow-sm hover:shadow-md hover:text-primary-700 transition-all"
                 >
-                  <Send className="w-5 h-5" />
-                  <span>{t.contact.form.send}</span>
-                </button>
+                  <span className="w-11 h-11 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-primary-700" />
+                  </span>
+                  <span className="text-left">
+                    <span className="block font-semibold">{language === "en" ? "Call New Bloom Spa" : "致电 New Bloom Spa"}</span>
+                    <span className="block text-sm text-gray-600">(224) 800-9337</span>
+                  </span>
+                </a>
 
-                <p className="text-sm text-gray-500 text-center">
-                  {t.contact.form.note}
-                </p>
-              </form>
+                <a
+                  href="mailto:newbloomspa@gmail.com?subject=New%20Bloom%20Spa%20Inquiry"
+                  data-event-name="email"
+                  data-event-location="contact-actions"
+                  className="w-full flex items-center gap-4 rounded-xl bg-white px-5 py-4 text-gray-900 shadow-sm hover:shadow-md hover:text-primary-700 transition-all"
+                >
+                  <span className="w-11 h-11 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-primary-700" />
+                  </span>
+                  <span className="text-left min-w-0">
+                    <span className="block font-semibold">{language === "en" ? "Email Us" : "发送邮件"}</span>
+                    <span className="block text-sm text-gray-600 break-all">newbloomspa@gmail.com</span>
+                  </span>
+                </a>
+
+                <a
+                  href="https://new-bloom-spa.square.site/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event-name="book"
+                  data-event-location="contact-actions"
+                  className="w-full flex items-center gap-4 rounded-xl bg-sage-700 px-5 py-4 text-white shadow-sm hover:bg-sage-800 hover:shadow-md transition-all"
+                >
+                  <span className="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5" />
+                  </span>
+                  <span className="text-left">
+                    <span className="block font-semibold">{language === "en" ? "Book on Square" : "通过 Square 预约"}</span>
+                    <span className="block text-sm text-sage-100">{language === "en" ? "View services, prices, and times" : "查看服务、价格和时间"}</span>
+                  </span>
+                </a>
+
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=1829%20S%20Cedar%20Lake%20Rd%2C%20Round%20Lake%2C%20IL%2060073-5711"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event-name="directions"
+                  data-event-location="contact-actions"
+                  className="w-full flex items-center gap-4 rounded-xl bg-white px-5 py-4 text-gray-900 shadow-sm hover:shadow-md hover:text-primary-700 transition-all"
+                >
+                  <span className="w-11 h-11 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-primary-700" />
+                  </span>
+                  <span className="text-left">
+                    <span className="block font-semibold">{language === "en" ? "Get Directions" : "获取路线"}</span>
+                    <span className="block text-sm text-gray-600">1829 S Cedar Lake Rd, Round Lake</span>
+                  </span>
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -304,14 +291,14 @@ export default function ContactPage() {
             {/* Google Maps Embed */}
             <div className="w-full h-96 bg-gray-200">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2954.8893846961396!2d-88.11096768454797!3d42.35694974918647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880f9c2e6f8e5b7d%3A0x1234567890abcdef!2s1829%20S%20Cedar%20Lake%20Rd%2C%20Round%20Lake%2C%20IL%2060073!5e0!3m2!1sen!2sus!4v1699564800000!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=1829%20S%20Cedar%20Lake%20Rd%2C%20Round%20Lake%2C%20IL%2060073-5711&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="NewBloom Spa Location"
+                title="New Bloom Spa Location"
               />
             </div>
 
@@ -393,14 +380,6 @@ export default function ContactPage() {
                 question: t.contact.faq.items.cancel.q,
                 answer: t.contact.faq.items.cancel.a
               },
-              {
-                question: t.contact.faq.items.gift.q,
-                answer: t.contact.faq.items.gift.a
-              },
-              {
-                question: t.contact.faq.items.prenatal.q,
-                answer: t.contact.faq.items.prenatal.a
-              }
             ].map((faq, index) => (
               <motion.div
                 key={index}

@@ -10,8 +10,10 @@ import {
   Award,
   Users,
   ArrowRight,
-  Gift,
-  Percent
+  Footprints,
+  Calendar,
+  MapPin,
+  Phone
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/data/translations";
@@ -39,12 +41,10 @@ const featuredServicesData = [
     duration: { en: "1 hr", zh: "1小时" },
     price: "$160",
     description: {
-      en: "Enjoy a deeply relaxing massage experience side by side in a calm and private setting. Perfect for celebrating special occasions.",
-      zh: "在宁静私密的环境中并排享受深度放松的按摩体验。非常适合庆祝特别的日子。"
+      en: "A side-by-side massage session for two in a calm, private setting. Pressure can be customized for each guest.",
+      zh: "两人在宁静私密的环境中并排享受按摩，每位客人的力度均可按需求调整。"
     },
-    image: "/images/body.jpg",
-    hasDiscount: true,
-    featured: true
+    image: "/images/body.jpg"
   },
   {
     id: "classic-60",
@@ -52,11 +52,10 @@ const featuredServicesData = [
     duration: { en: "1 hr", zh: "1小时" },
     price: "$80",
     description: {
-      en: "A full-body relaxation massage that helps ease muscle tension, improve circulation, and promote overall well-being.",
-      zh: "全身放松按摩，有助于缓解肌肉紧张、改善循环并促进整体健康。"
+      en: "A full-body massage session with light, medium, or deep pressure based on your preference.",
+      zh: "全身按摩疗程，可根据您的偏好选择轻柔、中等或深层力度。"
     },
-    image: "/images/body2.jpg",
-    hasDiscount: true
+    image: "/images/body2.jpg"
   },
   {
     id: "signature-60",
@@ -64,11 +63,10 @@ const featuredServicesData = [
     duration: { en: "1 hr", zh: "1小时" },
     price: "$100",
     description: {
-      en: "Our signature full-body massage focuses on relieving accumulated tension and restoring natural balance.",
-      zh: "我们的招牌全身按摩专注于缓解累积的紧张并恢复自然平衡。"
+      en: "A signature full-body massage session with focused attention to the areas you identify at check-in.",
+      zh: "招牌全身按摩，可在到店沟通时说明希望重点关注的部位。"
     },
-    image: "/images/head.jpg",
-    hasDiscount: true
+    image: "/images/head.jpg"
   },
   {
     id: "foot-40",
@@ -76,11 +74,10 @@ const featuredServicesData = [
     duration: { en: "40 mins", zh: "40分钟" },
     price: "$50",
     description: {
-      en: "A soothing foot care treatment that helps release tension and promote relaxation throughout the body.",
-      zh: "舒缓的足部护理，有助于释放紧张并促进全身放松。"
+      en: "A 40-minute foot care session in a calm setting.",
+      zh: "在宁静环境中进行的 40 分钟足部护理。"
     },
-    image: "/images/foot.jpg",
-    hasDiscount: false
+    image: null
   },
   {
     id: "facial-30",
@@ -88,11 +85,10 @@ const featuredServicesData = [
     duration: { en: "30 mins", zh: "30分钟" },
     price: "$50",
     description: {
-      en: "A classic facial treatment focused on deep cleansing and gentle exfoliation. Helps refresh the skin.",
-      zh: "经典面部护理，专注于深层清洁和温和去角质。有助于清新肌肤。"
+      en: "A 30-minute essential facial care session.",
+      zh: "30 分钟基础面部护理。"
     },
-    image: "/images/head2.jpg",
-    hasDiscount: false
+    image: "/images/head2.jpg"
   },
   {
     id: "facial-60",
@@ -100,11 +96,10 @@ const featuredServicesData = [
     duration: { en: "1 hr", zh: "1小时" },
     price: "$80",
     description: {
-      en: "A comprehensive professional facial that includes deep cleansing, exfoliation, mask, and massage.",
-      zh: "全面的专业面部护理，包括深层清洁、去角质、面膜和按摩。"
+      en: "A 60-minute professional facial care session with time for multiple care steps.",
+      zh: "60 分钟专业面部护理，为多项护理步骤预留时间。"
     },
-    image: "/images/head4.jpg",
-    hasDiscount: true
+    image: "/images/head4.jpg"
   }
 ];
 
@@ -112,17 +107,6 @@ export default function Home() {
   const { language } = useLanguage();
   const t = translations[language];
   const lang = language as 'en' | 'zh';
-
-  const texts = {
-    valentine: {
-      badge: { en: "Valentine's Special", zh: "情人节特惠" },
-      title: { en: "15% OFF", zh: "享85折优惠" },
-      subtitle: { en: "All massage services 60 min or longer", zh: "所有60分钟及以上按摩服务" },
-      note: { en: "Limited time offer!", zh: "限时优惠！" }
-    },
-    discount: { en: "15% OFF", zh: "85折" },
-    valentinePick: { en: "Valentine's Pick", zh: "情人节推荐" }
-  };
 
   return (
     <div className="overflow-hidden">
@@ -168,6 +152,8 @@ export default function Home() {
                 href="https://new-bloom-spa.square.site/" 
                 target="_blank"
                 rel="noopener noreferrer"
+                data-event-name="book"
+                data-event-location="home-hero"
                 className="btn-primary text-lg"
               >
                 {t.home.hero.bookNow}
@@ -213,54 +199,53 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Valentine's Day Promotion Banner */}
-      <section className="relative overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 py-6 md:py-8"
-        >
-          <div className="absolute inset-0 opacity-20">
-            <div className="w-full h-full" style={{ backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 10px)' }} />
+      {/* Visit Actions */}
+      <section className="border-y border-sage-100 bg-white py-8" aria-labelledby="visit-actions-title">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6">
+            <h2 id="visit-actions-title" className="text-2xl font-serif font-bold text-gray-900">
+              {lang === "en" ? "Plan Your Visit" : "安排到店"}
+            </h2>
+            <p className="mt-2 text-gray-600">
+              {lang === "en"
+                ? "Monday 10:00 AM-8:30 PM · Tuesday-Sunday 9:30 AM-8:30 PM"
+                : "周一 10:00-20:30 · 周二至周日 9:30-20:30"}
+            </p>
           </div>
-          
-          <div className="container-custom relative">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-white text-center md:text-left">
-              <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="flex items-center gap-2"
-              >
-                <Heart className="w-8 h-8 md:w-10 md:h-10 fill-white" />
-                <Gift className="w-8 h-8 md:w-10 md:h-10" />
-                <Heart className="w-8 h-8 md:w-10 md:h-10 fill-white" />
-              </motion.div>
-              
-              <div className="space-y-1">
-                <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-medium mb-2">
-                  💕 {texts.valentine.badge[lang]} 💕
-                </div>
-                <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center md:justify-start gap-3">
-                  <Percent className="w-6 h-6" />
-                  {texts.valentine.title[lang]} - {texts.valentine.subtitle[lang]}
-                </h2>
-              </div>
-              
-              <motion.a
-                href="https://new-bloom-spa.square.site/"
-                target="_blank"
-                rel="noopener noreferrer"
-                animate={{ y: [0, -3, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="bg-white text-rose-600 px-6 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-rose-50 transition-colors"
-              >
-                {texts.valentine.note[lang]}
-              </motion.a>
-            </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <a
+              href="https://new-bloom-spa.square.site/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event-name="book"
+              data-event-location="home-visit-actions"
+              className="flex min-h-12 items-center justify-center gap-2 rounded-full bg-sage-700 px-5 py-3 font-semibold text-white transition-colors hover:bg-sage-800"
+            >
+              <Calendar className="h-5 w-5" />
+              {lang === "en" ? "Book on Square" : "通过 Square 预约"}
+            </a>
+            <a
+              href="tel:+12248009337"
+              data-event-name="phone"
+              data-event-location="home-visit-actions"
+              className="flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-sage-700 px-5 py-3 font-semibold text-sage-800 transition-colors hover:bg-sage-50"
+            >
+              <Phone className="h-5 w-5" />
+              {lang === "en" ? "Call (224) 800-9337" : "致电 (224) 800-9337"}
+            </a>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=1829%20S%20Cedar%20Lake%20Rd%2C%20Round%20Lake%2C%20IL%2060073-5711"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event-name="directions"
+              data-event-location="home-visit-actions"
+              className="flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-sage-700 px-5 py-3 font-semibold text-sage-800 transition-colors hover:bg-sage-50"
+            >
+              <MapPin className="h-5 w-5" />
+              {lang === "en" ? "Get Directions" : "获取路线"}
+            </a>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Why Choose Us Section */}
@@ -366,38 +351,21 @@ export default function Home() {
               <motion.div
                 key={service.id}
                 variants={fadeInUp}
-                className={`bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative ${service.featured ? 'ring-2 ring-rose-400' : ''}`}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
-                {/* Discount Badge */}
-                {service.hasDiscount && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <motion.div
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg flex items-center gap-1"
-                    >
-                      <Heart className="w-3 h-3 fill-white" />
-                      {texts.discount[lang]}
-                    </motion.div>
+                {service.image ? (
+                  <div
+                    className="h-48 bg-cover bg-center"
+                    style={{ backgroundImage: `url('${service.image}')` }}
+                  />
+                ) : (
+                  <div className="h-48 bg-gradient-to-br from-sage-100 to-primary-100 flex items-center justify-center" aria-hidden="true">
+                    <Footprints className="w-16 h-16 text-sage-600" />
                   </div>
                 )}
-                
-                {/* Featured Badge */}
-                {service.featured && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <div className="bg-gradient-to-r from-rose-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                      💕 {texts.valentinePick[lang]}
-                    </div>
-                  </div>
-                )}
-                
-                <div 
-                  className="h-48 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${service.image}')` }}
-                />
                 <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-serif font-semibold text-gray-900 flex-1 pr-2">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-start mb-2">
+                    <h3 className="text-xl font-serif font-semibold text-gray-900 min-w-0 sm:flex-1 sm:pr-2">
                       {service.title[lang]}
                     </h3>
                     <span className="text-xl font-bold text-primary-600 whitespace-nowrap">
@@ -405,7 +373,7 @@ export default function Home() {
                     </span>
                   </div>
                   {service.subtitle && (
-                    <p className="text-sm text-rose-500 font-medium mb-2">
+                    <p className="text-sm text-primary-600 font-medium mb-2">
                       {service.subtitle[lang]}
                     </p>
                   )}
@@ -420,11 +388,10 @@ export default function Home() {
                     href="https://new-bloom-spa.square.site/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block text-center py-3 px-6 rounded-full font-medium transition-colors ${
-                      service.hasDiscount 
-                        ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white hover:from-rose-600 hover:to-pink-600' 
-                        : 'bg-sage-600 text-white hover:bg-sage-700'
-                    }`}
+                    data-event-name="book"
+                    data-event-location="home-featured-service"
+                    data-service-id={service.id}
+                    className="block text-center py-3 px-6 rounded-full font-medium bg-sage-600 text-white hover:bg-sage-700 transition-colors"
                   >
                     {t.home.hero.bookNow}
                   </a>
@@ -471,6 +438,8 @@ export default function Home() {
                 href="https://new-bloom-spa.square.site/"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-event-name="book"
+                data-event-location="home-footer-cta"
                 className="px-10 py-4 bg-white text-sage-600 rounded-full font-bold text-lg hover:bg-sage-50 transition-all duration-300 hover:shadow-2xl hover:scale-105"
               >
                 {t.home.cta.bookNow}

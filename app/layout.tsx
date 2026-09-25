@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { localBusinessJsonLd, SITE_URL } from "@/lib/seo";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -18,9 +19,29 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "NewBloom Spa - Professional Beauty & Massage Center",
-  description: "NewBloom Spa offers professional beauty treatments and massage services in a serene, elegant environment.",
-  keywords: "spa, massage, beauty, facial, body treatment, relaxation, wellness",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "New Bloom Spa - Massage, Facials & Foot Care in Round Lake",
+    template: "%s | New Bloom Spa",
+  },
+  description: "New Bloom Spa offers massage, couples massage, facial treatments, and foot care in Round Lake, Illinois.",
+  keywords: ["spa", "massage", "couples massage", "facial care", "foot care", "Round Lake", "Illinois"],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "New Bloom Spa",
+    title: "New Bloom Spa - Massage, Facials & Foot Care in Round Lake",
+    description: "New Bloom Spa offers massage, couples massage, facial treatments, and foot care in Round Lake, Illinois.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+    title: "New Bloom Spa - Massage, Facials & Foot Care in Round Lake",
+    description: "New Bloom Spa offers massage, couples massage, facial treatments, and foot care in Round Lake, Illinois.",
+  },
 };
 
 export default function RootLayout({
@@ -31,6 +52,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <LanguageProvider>
           <Navbar />
           <main className="min-h-screen">
@@ -42,4 +69,3 @@ export default function RootLayout({
     </html>
   );
 }
-
